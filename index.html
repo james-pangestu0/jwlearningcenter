@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JW Learning Center - Bimbel Online Berkualitas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #2B5A9E;
+            --secondary-blue: #4A9FE8;
+            --light-blue: #E8F4FF;
+            --yellow: #FFD700;
+            --text-dark: #1a1a1a;
+            --text-gray: #666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Navbar */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-blue);
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 159, 232, 0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--light-blue) 0%, white 100%);
+            padding: 4rem 2rem;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .student-illustration {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+        }
+
+        /* Subjects Section */
+        .subjects {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 3rem;
+        }
+
+        .subjects-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .subject-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(74, 159, 232, 0.3);
+        }
+
+        .subject-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .subject-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* Packages Section */
+        .packages {
+            padding: 4rem 2rem;
+            background: var(--light-blue);
+        }
+
+        .packages-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .package-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card.featured {
+            border: 3px solid var(--yellow);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--yellow);
+            color: var(--primary-blue);
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .package-card h3 {
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            color: var(--secondary-blue);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .package-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .package-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .package-features li:before {
+            content: "✓ ";
+            color: var(--secondary-blue);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--light-blue);
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .stars {
+            color: var(--yellow);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Promo Banner */
+        .promo-banner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .promo-banner h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .promo-code {
+            background: white;
+            color: var(--primary-blue);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-blue);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-gray);
+        }
+
+        .modal-content h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--secondary-blue);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .packages-grid,
+            .subjects-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-circle">JW</div>
+                <span>Learning Center</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#subjects">Mata Pelajaran</a></li>
+                <li><a href="#packages">Paket Kursus</a></li>
+                <li><a href="#testimonials">Testimoni</a></li>
+                <li><a href="#" class="btn btn-outline" onclick="openModal('login')">Login</a></li>
+                <li><a href="#" class="btn btn-primary" onclick="openModal('signup')">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Belajar Di JW Learning Center</h1>
+                <p>Solusi berkarakter untuk belajar lebih asyik, untuk masa depan yang lebih cemerlang dan ceria!</p>
+                <div class="hero-buttons">
+                    <a href="#packages" class="btn btn-primary">Daftar Sekarang</a>
+                    <a href="#subjects" class="btn btn-outline">Lihat Program</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <svg class="student-illustration" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Laptop -->
+                    <rect x="150" y="250" width="150" height="100" fill="#4A9FE8" rx="5"/>
+                    <rect x="155" y="255" width="140" height="80" fill="#E8F4FF"/>
+                    <circle cx="225" cy="295" r="3" fill="#4A9FE8"/>
+                    <rect x="200" y="350" width="50" height="5" fill="#2B5A9E"/>
+                    
+                    <!-- Person -->
+                    <circle cx="200" cy="150" r="40" fill="#2B5A9E"/>
+                    <rect x="175" y="190" width="50" height="60" fill="#FFD700" rx="25"/>
+                    <rect x="160" y="200" width="15" height="40" fill="#FFD700" rx="7"/>
+                    <rect x="225" y="200" width="15" height="40" fill="#FFD700" rx="7"/>
+                    
+                    <!-- Smile -->
+                    <path d="M 185 145 Q 200 155 215 145" stroke="#4A9FE8" stroke-width="3" fill="none"/>
+                    <circle cx="190" cy="140" r="3" fill="#4A9FE8"/>
+                    <circle cx="210" cy="140" r="3" fill="#4A9FE8"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section class="subjects" id="subjects">
+        <h2 class="section-title">Mata Pelajaran yang Tersedia</h2>
+        <div class="subjects-grid">
+            <div class="subject-card">
+                <div class="subject-icon">📐</div>
+                <h3>Matematika</h3>
+                <p>Belajar matematika dengan cara yang menyenangkan dan mudah dipahami</p>
+            </div>
+            <div class="subject-card">
+                <div class="subject-icon">⚡</div>
+                <h3>Fisika</h3>
+                <p>Pahami konsep fisika dengan penjelasan yang jelas dan aplikatif</p>
+            </div>
+            <div class="subject-card">
+                <div class="subject-icon">🧪</div>
+                <h3>Kimia</h3>
+                <p>Eksplorasi dunia kimia dengan metode pembelajaran interaktif</p>
+            </div>
+            <div class="subject-card">
+                <div class="subject-icon">🌍</div>
+                <h3>Bahasa Inggris</h3>
+                <p>Tingkatkan kemampuan bahasa Inggris dengan tutor berpengalaman</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="packages" id="packages">
+        <h2 class="section-title">Paket Kursus</h2>
+        <div class="packages-grid">
+            <div class="package-card">
+                <h3>LES SD</h3>
+                <p>Semua Mata Pelajaran</p>
+                <div class="price">Rp 250k<span style="font-size: 1rem;">/bulan</span></div>
+                <ul class="package-features">
+                    <li>Semua mata pelajaran SD</li>
+                    <li>8 sesi per bulan</li>
+                    <li>Materi lengkap</li>
+                    <li>Tutor berpengalaman</li>
+                    <li>Konsultasi gratis</li>
+                </ul>
+                <a href="#" class="btn btn-primary" onclick="openModal('signup')">Pilih Paket</a>
+            </div>
+
+            <div class="package-card featured">
+                <div class="featured-badge">POPULER</div>
+                <h3>SMP</h3>
+                <p>Semua Mata Pelajaran</p>
+                <div class="price">Rp 350k<span style="font-size: 1rem;">/bulan</span></div>
+                <ul class="package-features">
+                    <li>Semua mata pelajaran SMP</li>
+                    <li>12 sesi per bulan</li>
+                    <li>Materi + latihan soal</li>
+                    <li>Tutor profesional</li>
+                    <li>Try out gratis</li>
+                    <li>Konsultasi unlimited</li>
+                </ul>
+                <a href="#" class="btn btn-primary" onclick="openModal('signup')">Pilih Paket</a>
+            </div>
+
+            <div class="package-card">
+                <h3>SMA</h3>
+                <p>Matematika, Fisika, Kimia, B.Inggris</p>
+                <div class="price">Rp 450k<span style="font-size: 1rem;">/bulan</span></div>
+                <ul class="package-features">
+                    <li>4 mata pelajaran pilihan</li>
+                    <li>16 sesi per bulan</li>
+                    <li>Materi UTBK/SBMPTN</li>
+                    <li>Tutor expert</li>
+                    <li>Try out berkala</li>
+                    <li>Bimbingan karir</li>
+                </ul>
+                <a href="#" class="btn btn-primary" onclick="openModal('signup')">Pilih Paket</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Banner -->
+    <section class="promo-banner">
+        <h2>Diskon Spesial untuk 100 Pendaftar Pertama!</h2>
+        <p>Gunakan kode promo untuk mendapatkan diskon khusus</p>
+        <div class="promo-code">MAUDONGJW</div>
+        <a href="#" class="btn btn-outline" style="color: white; border-color: white;" onclick="openModal('signup')">Daftar Sekarang</a>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <h2 class="section-title">Testimoni Siswa</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Belajarnya lebih asyik!!"</p>
+                <div class="testimonial-author">
+                    <div class="avatar">A</div>
+                    <div>
+                        <strong>Ace</strong>
+                        <p style="font-size: 0.9rem; color: var(--text-gray);">Siswa SMP</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Cara ajarnya sangat dimengerti"</p>
+                <div class="testimonial-author">
+                    <div class="avatar">An</div>
+                    <div>
+                        <strong>Andri</strong>
+                        <p style="font-size: 0.9rem; color: var(--text-gray);">Siswa SMA</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Tutornya sabar dan materinya mudah dipahami. Nilai saya jadi naik!"</p>
+                <div class="testimonial-author">
+                    <div class="avatar">B</div>
+                    <div>
+                        <strong>Budi</strong>
+                        <p style="font-size: 0.9rem; color: var(--text-gray);">Siswa SMP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo" style="justify-content: center; color: white; margin-bottom: 1rem;">
+                <div class="logo-circle">JW</div>
+                <span>Learning Center</span>
+            </div>
+            <p>Solusi berkarakter untuk masa depan cemerlang</p>
+            <p style="margin-top: 1rem;">© 2025 JW Learning Center. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('login')">&times;</span>
+            <h2>Login</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required placeholder="Masukkan email Anda">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required placeholder="Masukkan password">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Login</button>
+                <p style="text-align: center; margin-top: 1rem;">
+                    Belum punya akun? <a href="#" onclick="switchModal('login', 'signup')" style="color: var(--secondary-blue);">Daftar di sini</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('signup')">&times;</span>
+            <h2>Daftar Sekarang</h2>
+            <form onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" required placeholder="Masukkan nama lengkap">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required placeholder="Masukkan email">
+                </div>
+                <div class="form-group">
+                    <label>No. WhatsApp</label>
+                    <input type="tel" required placeholder="08xxxxxxxxxx">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required placeholder="Buat password">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Daftar</button>
+                <p style="text-align: center; margin-top: 1rem;">
+                    Sudah punya akun? <a href="#" onclick="switchModal('signup', 'login')" style="color: var(--secondary-blue);">Login di sini</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal(type) {
+            const modalId = type === 'login' ? 'loginModal' : 'signupModal';
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(type) {
+            const modalId = type === 'login' ? 'loginModal' : 'signupModal';
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function switchModal(closeType, openType) {
+            closeModal(closeType);
+            openModal(openType);
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            alert('Login berhasil! Selamat datang di JW Learning Center.');
+            closeModal('login');
+        }
+
+        function handleSignup(event) {
+            event.preventDefault();
+            alert('Pendaftaran berhasil! Selamat bergabung di JW Learning Center. Silakan login untuk melanjutkan.');
+            closeModal('signup');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const loginModal = document.getElementById('loginModal');
+            const signupModal = document.getElementById('signupModal');
+            if (event.target === loginModal) {
+                closeModal('login');
+            }
+            if (event.target === signupModal) {
+                closeModal('signup');
+            }
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && !this.hasAttribute('onclick')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
